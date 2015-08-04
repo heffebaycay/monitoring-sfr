@@ -2,6 +2,7 @@ package fr.heffebaycay.monitoring.monitoring_sfr.ui;
 
 
 import fr.heffebaycay.monitoring.monitoring_sfr.config.Configuration;
+import fr.heffebaycay.monitoring.monitoring_sfr.service.MonitoringService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +20,10 @@ public class MonitoringClient {
         } else {
             logger.error("Failed to load application configuration");
         }
+
+        MonitoringService monitoringService = new MonitoringService();
+
+        monitoringService.printVoIPStatus();
 
 
     }

@@ -4,12 +4,8 @@ import fr.heffebaycay.monitoring.monitoring_sfr.api.model.NeufboxError;
 import fr.heffebaycay.monitoring.monitoring_sfr.api.model.NeufboxResponse;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class GetTokenResponse extends NeufboxResponse {
-
-    private static final Logger logger = LoggerFactory.getLogger(GetTokenResponse.class);
 
     @Attribute(name = "stat")
     protected String status;
