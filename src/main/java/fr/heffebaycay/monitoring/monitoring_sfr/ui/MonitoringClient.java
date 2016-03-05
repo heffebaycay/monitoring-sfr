@@ -3,6 +3,7 @@ package fr.heffebaycay.monitoring.monitoring_sfr.ui;
 
 import fr.heffebaycay.monitoring.monitoring_sfr.config.Configuration;
 import fr.heffebaycay.monitoring.monitoring_sfr.service.MonitoringService;
+import org.flywaydb.core.Flyway;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,11 +22,23 @@ public class MonitoringClient {
             logger.error("Failed to load application configuration");
         }
 
-        MonitoringService monitoringService = new MonitoringService();
+        if (args.length > 0 && "-migrate".equals(args[0])) {
+            logger.info("Initializing migration mode");
+            migrate();
+        } else {
+            logger.info("Initializing monitoring service");
+            MonitoringService monitoringService = new MonitoringService();
+            monitoringService.processMonitoring();
+        }
 
-        monitoringService.printVoIPStatus();
+    }
 
+    private static void migrate() {
+        Flyway flyway = new Flyway();
 
+        flyway.setDataSource("jdbc:sqlite:" + Configuration.getDatabaseName(), "", "");
+
+        flyway.migrate();
     }
 
 }

@@ -1,0 +1,1 @@
+CREATE TABLE voip_status (id INTEGER PRIMARY KEY AUTOINCREMENT, status TEXT, infra TEXT, hook_status TEXT, callhistory_active TEXT, date_recorded TEXT);

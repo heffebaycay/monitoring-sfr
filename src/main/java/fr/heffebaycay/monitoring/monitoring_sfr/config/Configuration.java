@@ -18,10 +18,12 @@ public class Configuration {
     private static final String CONFIG_NEUFBOX_USERNAME = "neufbox.username";
     private static final String CONFIG_NEUFBOX_PASSWORD = "neufbox.password";
     private static final String CONFIG_NEUFBOX_HOST = "neufbox.host";
+    private static final String CONFIG_DATABASE_NAME = "database.name";
 
     protected static String neufBoxUsername;
     protected static String neufBoxPassword;
     protected static String neufBoxHost;
+    protected static String databaseName;
 
     public static String getNeufBoxUsername() {
         return neufBoxUsername;
@@ -33,6 +35,10 @@ public class Configuration {
 
     public static String getNeufBoxHost() {
         return neufBoxHost;
+    }
+
+    public static String getDatabaseName() {
+        return databaseName;
     }
 
     public static boolean load() {
@@ -53,6 +59,7 @@ public class Configuration {
         neufBoxUsername = configProperties.getProperty(CONFIG_NEUFBOX_USERNAME);
         neufBoxPassword = configProperties.getProperty(CONFIG_NEUFBOX_PASSWORD);
         neufBoxHost = configProperties.getProperty(CONFIG_NEUFBOX_HOST);
+        databaseName = configProperties.getProperty(CONFIG_DATABASE_NAME);
 
         return true;
     }
